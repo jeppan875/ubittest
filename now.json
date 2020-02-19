@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "regions": ["arn1"],
+  "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+  "env": {}
+}

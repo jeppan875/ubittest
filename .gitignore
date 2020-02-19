@@ -1,0 +1,8 @@
+**/node_modules
+**/dbjson
+**/*/node_modules/
+.env
+**/build
+env.config.js
+**/.vscode
+.next
