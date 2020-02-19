@@ -17,7 +17,7 @@ export default async (req, res) => {
   if (slug == null) {
     const params = {
       TableName: "ubit-articles",
-      Limit: 1
+      Limit: 5
     };
 
     const resData = await docClient.scan(params).promise();
