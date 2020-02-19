@@ -8,6 +8,7 @@ module.exports = {
         alias: {
           utils: "./utils",
           containers: "./containers",
+          apiLib: "./apiLib",
           components: "./components",
           globals: "./globals"
         }
