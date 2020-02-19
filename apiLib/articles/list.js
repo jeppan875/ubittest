@@ -13,20 +13,32 @@ const docClient = new AWS.DynamoDB.DocumentClient({
 
 export default async (req, res) => {
   const { slug } = req.query;
-  const params = {
-    TableName: "ubit-articles",
-    Key: {
-      type: "article",
-      slug
-    }
-  };
-  const resData = await docClient.get(params).promise();
-  res.setHeader("Content-Type", "application/json");
-  if (!resData) {
-    res.statusCode = 404;
-    res.end(JSON.stringify({ err: { msg: "Could not find article" } }));
-  } else {
+
+  if (slug == null) {
+    const params = {
+      TableName: "ubit-articles",
+      Limit: 1
+    };
+
+    const resData = await docClient.scan(params).promise();
+    res.setHeader("Content-Type", "application/json");
     res.statusCode = 200;
-    res.end(JSON.stringify(data));
+    res.end(JSON.stringify(resData));
+  } else {
+    const params = {
+      TableName: "ubit-articles",
+      Key: {
+        slug
+      }
+    };
+    const resData = await docClient.get(params).promise();
+    res.setHeader("Content-Type", "application/json");
+    if (resData.Item == null) {
+      res.statusCode = 404;
+      res.end(JSON.stringify({ err: "Could not find article" }));
+    } else {
+      res.statusCode = 200;
+      res.end(JSON.stringify(resData.Item));
+    }
   }
 };

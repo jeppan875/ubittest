@@ -12,10 +12,10 @@ const docClient = new AWS.DynamoDB.DocumentClient({
 });
 
 export default async (req, res) => {
-  const { data } = req.body;
+  const data = req.body;
   const params = {
     TableName: "ubit-articles",
-    Item: data
+    Item: { ...data, createdAt: new Date().getTime() }
   };
   const resData = await docClient.put(params).promise();
   res.setHeader("Content-Type", "application/json");
