@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { media, gutters } from "utils/cssMixins";
+import { media } from "utils/cssMixins";
 
 const StyledWrapper = styled.div`
   display: flex;
