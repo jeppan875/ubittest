@@ -5,6 +5,8 @@ import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
 import makeStore from "../store";
 import GlobalStyles from "../GlobalStyles";
+import Header from "components/Header";
+import PageWrapper from "components/PageWrapper";
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -22,7 +24,10 @@ class MyApp extends App {
       <>
         <Provider store={store}>
           <GlobalStyles />
-          <Component {...pageProps} />
+          <Header />
+          <PageWrapper>
+            <Component {...pageProps} />
+          </PageWrapper>
         </Provider>
       </>
     );
