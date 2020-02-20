@@ -1,8 +1,9 @@
+import Error from "components/Error";
 import LoadingIndicator from "components/Loaders";
 
-export default ({ children, fetching, error }) => {
+export default ({ children, fetching, error, errMsg }) => {
   if (error) {
-    return <div>Something went wrong</div>;
+    return <Error err={errMsg} />;
   } else {
     return fetching ? <LoadingIndicator /> : children;
   }
