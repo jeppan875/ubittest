@@ -13,7 +13,13 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
   return acc;
 }, {});
 
+export const gutters = {
+  desktop: "100px",
+  mobile: "10px"
+};
+
 export const colors = {
+  primary: "#090a3a",
   greys: [
     "#FAF9F9",
     "#DDDDDD",
