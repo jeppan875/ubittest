@@ -6,5 +6,10 @@ export const homeSelector = state => {
 
 export const articleSelector = createSelector(
   homeSelector,
-  home => home.articles
+  home => home.articles.data
+);
+
+export const fetchingArticles = createSelector(
+  homeSelector,
+  home => home.articles.fetching
 );

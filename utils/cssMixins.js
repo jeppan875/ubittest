@@ -13,4 +13,14 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
   return acc;
 }, {});
 
-export const colors = {};
+export const colors = {
+  greys: [
+    "#FAF9F9",
+    "#DDDDDD",
+    "#9B9B9B",
+    "#979797",
+    "#4a4a4a",
+    "#333333",
+    "#222222"
+  ]
+};
