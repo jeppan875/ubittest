@@ -1,8 +1,8 @@
 import { css } from "styled-components";
 const sizes = {
   desktop: 1024,
-  tablet: 900,
-  mobile: 600
+  tablet: 745,
+  mobile: 635
 };
 export const media = Object.keys(sizes).reduce((acc, label) => {
   acc[label] = (...args) => css`
@@ -14,8 +14,7 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
 }, {});
 
 export const gutters = {
-  desktop: "100px",
-  mobile: "10px"
+  pageGutter: "15px"
 };
 
 export const colors = {

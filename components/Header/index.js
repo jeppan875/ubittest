@@ -12,9 +12,19 @@ const Headear = styled.div`
   top: 0px;
   position: fixed;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
   ${media.mobile`
-      height: 45px;
-  `}
+   max-width: 100%;
+   margin-right: 0px;
+`}
 `;
 
 const SimpleLink = styled.a`
@@ -26,20 +36,19 @@ const SimpleLink = styled.a`
 
 const HeaderText = styled.h2`
   color: white;
-  margin-left: ${gutters.desktop};
-  ${media.mobile`
-    margin-left: ${gutters.mobile};
-  `}
+  margin-left: ${gutters.pageGutter};
 `;
 
 export default () => {
   return (
     <Headear>
-      <Link href={`/`} passHref>
-        <SimpleLink>
-          <HeaderText>UBIT Test</HeaderText>
-        </SimpleLink>
-      </Link>
+      <Wrapper>
+        <Link href={`/`} passHref>
+          <SimpleLink>
+            <HeaderText>UBIT Test</HeaderText>
+          </SimpleLink>
+        </Link>
+      </Wrapper>
     </Headear>
   );
 };
