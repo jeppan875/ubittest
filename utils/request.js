@@ -1,10 +1,11 @@
+const devUrl = "http://localhost:8082";
+
 export default async ({ url, data = undefined, method = "GET" }) => {
-  const response = await fetch(`${url}`, {
+  const response = await fetch(`${devUrl}/${url}`, {
     method,
     headers: {
       Accept: "application/json",
-      "Content-Type": data ? "application/json" : "",
-      Authorization: firetoken ? firetoken : undefined
+      "Content-Type": data ? "application/json" : ""
     },
     body: data && method !== "GET" ? JSON.stringify(data) : undefined
   });
