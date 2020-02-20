@@ -17,7 +17,8 @@ export const Loader = styled(LoaderAlt)`
   align-self: center;
   width: 46px;
   height: 46px;
-  margin-right: 5px;
+  margin-right: auto;
+  margin-left: auto;
   color: ${colors.greys[3]};
   animation-name: ${rotate};
   animation-duration: 1s;

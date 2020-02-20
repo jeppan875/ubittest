@@ -19,10 +19,16 @@ const Flex = styled.div`
   > div:nth-child(odd) {
     margin-right: ${gutters.pageGutter};
   }
+  ${media.tablet`
+    > div {
+      flex: 0 45%;
+    }
+  `}
   ${media.mobile`
-  > div {
-    margin-right: ${gutters.pageGutter};
-  }
+    > div {
+      flex: 0 100%;
+      margin-right: ${gutters.pageGutter};
+    }
   `}
 `;
 

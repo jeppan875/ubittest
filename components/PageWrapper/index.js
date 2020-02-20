@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { media, gutters } from "utils/cssMixins";
 
 const StyledWrapper = styled.div`
+  display: flex;
   width: 100%;
   margin-left: auto;
   margin-right: auto;

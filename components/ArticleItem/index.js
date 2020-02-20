@@ -7,20 +7,14 @@ const Root = styled.div`
   background-color: white;
   width: 100%;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
-  ${media.tablet`
-  max-width: 300px;
-  `}
-  ${media.mobile`
-    max-width: 350px;
-  `}
 `;
 
 const Image = styled.img`
   width: 100%;
   max-height: 350px;
   ${media.tablet`
-  max-height: 300px;
-`}
+    max-height: 300px;
+  `}
 `;
 
 const Content = styled.div`
