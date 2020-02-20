@@ -1,4 +1,8 @@
-import { SET_ARTICLES, SET_FETCHING_ARTICLES } from "./constants";
+import {
+  SET_ARTICLES,
+  SET_FETCHING_ARTICLES,
+  SET_ARTICLES_ERROR
+} from "./constants";
 
 const initialState = {
   articles: {
@@ -27,6 +31,15 @@ export default (state = initialState, action) => {
         articles: {
           ...state.articles,
           fetching: data
+        }
+      };
+
+    case SET_ARTICLES_ERROR:
+      return {
+        ...state,
+        articles: {
+          ...state.articles,
+          error: data
         }
       };
 

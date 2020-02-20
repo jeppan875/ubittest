@@ -2,7 +2,7 @@ import { takeLatest } from "redux-saga/effects";
 import { put, call } from "redux-saga/effects";
 import request from "utils/request";
 import { FETCH_ARTICLES } from "./constants";
-import { setArticles, setFetchingArticles } from "./actions";
+import { setArticles, setFetchingArticles, setArticleError } from "./actions";
 function* fetchArticles() {
   const url = "api/articles";
   yield put(
@@ -13,11 +13,20 @@ function* fetchArticles() {
   const response = yield call(request, {
     url
   });
-  yield put(
-    setArticles({
-      data: response
-    })
-  );
+  if (response.err) {
+    yield put(
+      setArticleError({
+        data: response.err
+      })
+    );
+  } else {
+    yield put(
+      setArticles({
+        data: response
+      })
+    );
+  }
+
   yield put(
     setFetchingArticles({
       data: false

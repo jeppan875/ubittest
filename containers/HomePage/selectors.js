@@ -13,3 +13,8 @@ export const fetchingArticles = createSelector(
   homeSelector,
   home => home.articles.fetching
 );
+
+export const errorArticles = createSelector(
+  homeSelector,
+  home => home.articles.error
+);
