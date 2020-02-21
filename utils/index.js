@@ -5,6 +5,6 @@ export const getEnv = () => {
 
 export const baseUrl = () => {
   return process.env.NODE_ENV === "production"
-    ? "prod"
+    ? "https://ubittest.jeppan875.now.sh"
     : "http://localhost:8082";
 };
