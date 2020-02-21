@@ -1,3 +1,5 @@
+import slugify from "slugify";
+
 const AWS = require("aws-sdk");
 
 AWS.config.update({
@@ -15,7 +17,11 @@ export default async (req, res) => {
   const data = req.body;
   const params = {
     TableName: "ubit-articles",
-    Item: { ...data, createdAt: new Date().getTime() }
+    Item: {
+      ...data,
+      createdAt: new Date().getTime(),
+      slug: slugify(data.title)
+    }
   };
   const resData = await docClient.put(params).promise();
   res.setHeader("Content-Type", "application/json");

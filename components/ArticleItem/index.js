@@ -52,7 +52,7 @@ const Title = styled.h3`
 `;
 
 export default ({ article }) => {
-  const { title, imgurl, createdAt, text, slug } = article;
+  const { title, imgurl, slug } = article;
   return (
     <Root>
       <Link href={`/article/[slug]`} as={`/article/${slug}`} passHref>
