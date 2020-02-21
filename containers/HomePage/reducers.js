@@ -7,9 +7,7 @@ import {
 const initialState = {
   articles: {
     fetching: false,
-    data: {
-      results: []
-    }
+    data: {}
   }
 };
 

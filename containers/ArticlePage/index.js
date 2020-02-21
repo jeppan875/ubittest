@@ -13,7 +13,7 @@ const ArticlePage = ({ fetchArticle, articles }) => {
   useEffect(() => {
     fetchArticle({ slug });
   }, []);
-  console.log(articles);
+
   return (
     <Fetching fetching={articles[slug]?.fetching} error={articles[slug]?.error}>
       {articles[slug]?.data ? <Article article={articles[slug].data} /> : null}

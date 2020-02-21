@@ -36,7 +36,7 @@ const HomePage = ({ fetchArticles, articles, fetching, error }) => {
   useEffect(() => {
     fetchArticles();
   }, []);
-  console.log(articles.Items?.[0]);
+
   return (
     <Fetching fetching={fetching} error={error}>
       <Flex>
