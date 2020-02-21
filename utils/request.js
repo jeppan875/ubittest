@@ -1,7 +1,7 @@
-const devUrl = "http://localhost:8082";
+import { baseUrl } from "utils";
 
 export default async ({ url, data = undefined, method = "GET" }) => {
-  const response = await fetch(`${devUrl}/${url}`, {
+  const response = await fetch(`${baseUrl()}/${url}`, {
     method,
     headers: {
       Accept: "application/json",

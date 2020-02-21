@@ -8,7 +8,6 @@ function* fetchArticles() {
   const url = "api/articles";
   const oldData = yield select(articleSelector);
   console.log(oldData);
-  if (oldData) return;
   yield put(
     setFetchingArticles({
       data: true

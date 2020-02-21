@@ -2,7 +2,7 @@ import React from "react";
 import ArticlePage from "containers/ArticlePage";
 import { setArticle } from "containers/ArticlePage//actions";
 import fetch from "isomorphic-unfetch";
-const devUrl = "http://localhost:8082";
+import { baseUrl } from "utils";
 const Article = () => {
   return <ArticlePage />;
 };
@@ -10,7 +10,7 @@ const Article = () => {
 Article.getInitialProps = async ({ store, req, query }) => {
   if (req) {
     const { slug } = query;
-    const res = await fetch(`${devUrl}/api/articles?slug=${slug}`);
+    const res = await fetch(`${baseUrl()}/api/articles?slug=${slug}`);
     const data = await res.json();
     store.dispatch(setArticle({ data, slug }));
   }
