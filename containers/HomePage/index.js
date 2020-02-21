@@ -41,7 +41,9 @@ const HomePage = ({ fetchArticles, articles, fetching, error }) => {
     <Fetching fetching={fetching} error={error}>
       <Flex>
         {articles.Items
-          ? articles.Items?.map(article => <ArticleItem article={article} />)
+          ? articles.Items?.map(article => (
+              <ArticleItem article={article} key={article.slug} />
+            ))
           : null}
       </Flex>
     </Fetching>

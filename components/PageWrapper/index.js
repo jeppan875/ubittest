@@ -13,7 +13,6 @@ const StyledWrapper = styled.div`
         margin-left: 0px;
         margin-right: 0px;
     `}
-  margin-top: 50px;
   margin-bottom: 100px;
 `;
 

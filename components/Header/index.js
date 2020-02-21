@@ -9,8 +9,6 @@ const Headear = styled.div`
   color: white;
   height: 50px;
   width: 100%;
-  top: 0px;
-  position: fixed;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
 `;
 
