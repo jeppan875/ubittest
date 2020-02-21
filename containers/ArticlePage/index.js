@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
 import { FETCH_ARTICLE } from "./constants";
 import { articlesBySlug } from "./selectors";
 import { createStructuredSelector } from "reselect";
 import Fetching from "components/Fetching";
-import { media, gutters } from "utils/cssMixins";
 import { useRouter } from "next/router";
+import Article from "./components";
 
 const ArticlePage = ({ fetchArticle, articles }) => {
   const router = useRouter();
@@ -17,7 +16,7 @@ const ArticlePage = ({ fetchArticle, articles }) => {
   console.log(articles);
   return (
     <Fetching fetching={articles[slug]?.fetching} error={articles[slug]?.error}>
-      <span>jsrgrjss</span>
+      {articles[slug]?.data ? <Article article={articles[slug].data} /> : null}
     </Fetching>
   );
 };
