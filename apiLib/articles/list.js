@@ -12,6 +12,7 @@ const docClient = new AWS.DynamoDB.DocumentClient({
 });
 
 export default async (req, res) => {
+  res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
   const { slug } = req.query;
 
   if (slug == null) {
