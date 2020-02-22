@@ -40,6 +40,10 @@ Components folders holds components that are shared throughout the application.
 
 The Main container folder have action, sagas etc which is used throughout the application.
 
+Utils folder have some common utils for the application
+
+Server folder is only for developing locally with an express server
+
 ## Backend
 
 - Lambdas
