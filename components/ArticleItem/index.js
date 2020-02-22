@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { media, colors, gutters } from "utils/cssMixins";
+import { media, colors } from "utils/cssMixins";
 
 const Root = styled.div`
   max-width: 350px;
