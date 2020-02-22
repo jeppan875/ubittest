@@ -1,6 +1,6 @@
 # UBIT test
 
-The application can be reached on this url: [UBIT test](https://ubittest.jeppan875.now.sh/)
+The application can be reached from this url: [UBIT test](https://ubittest.jeppan875.now.sh/)
 
 ## Frontend
 
@@ -14,13 +14,13 @@ The application can be reached on this url: [UBIT test](https://ubittest.jeppan8
 React framework for client and server rendering. Disable javascript in the browser (chrome) by going to settings > debugger and see each page render without any javascript execution.
 
 NextJs has a top pages directory where each defined page file represents a webpage, for instance article.js would become domain/article. Index.js is the home directory /. By making a file in brackets [slug].js
-we can create dynamic pages based on that param, in this case a slug. So each article can be reach by their slug.
+we can create dynamic pages based on that param, in this case a slug. So each article can be reach by their slug. For example mydomain/articles/my-slug
 
 The rest is quite similar ordinary react with a component tree that starts with app.js which is also defined in the pages directory.
 
 #### Redux
 
-I choosed to use redux for state handling. It is a lot of overhead but tend to work out fine as project scales.
+I choosed to use redux for state handling. It is a lot of overhead but tend to work out fine as project scales.It provides a good debugger where you can see dispatched actions, current state, rewind state etc.
 
 #### sagas
 
@@ -37,6 +37,8 @@ A quite straightforward css library where you can style your components. It is e
 Each page file in the pages folder has a corresponding container. Here they have their sagas, actions, selectors, reducers and constants files. They also have a components folder for components specific for this page only.
 
 Components folders holds components that are shared throughout the application.
+
+The Main container folder have action, sagas etc which is used throughout the application.
 
 ## Backend
 
