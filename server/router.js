@@ -4,5 +4,6 @@ import articles from "pages/api/articles";
 
 const router = express.Router();
 router.post("/articles", articles);
+router.delete("/articles", articles);
 router.get("/articles", articles);
 export default router;

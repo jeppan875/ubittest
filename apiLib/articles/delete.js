@@ -1,6 +1,3 @@
-import slugify from "slugify";
-import { articleSchema } from "apiLib/validations";
-
 const AWS = require("aws-sdk");
 
 AWS.config.update({
@@ -16,24 +13,18 @@ const docClient = new AWS.DynamoDB.DocumentClient({
 
 export default async (req, res) => {
   try {
-    const data = req.body;
-    const { error } = articleSchema.validate(data);
-    if (error) {
-      throw new Error("validation failed");
-    }
+    const { slug } = req.query;
     const params = {
       TableName: "ubit-articles",
-      Item: {
-        ...data,
-        createdAt: new Date().getTime(),
-        slug: slugify(data.title)
+      Key: {
+        slug
       }
     };
-    const resData = await docClient.put(params).promise();
+    const resData = await docClient.delete(params).promise();
     res.setHeader("Content-Type", "application/json");
 
     res.statusCode = 200;
-    res.end(JSON.stringify({ resData }));
+    res.end(JSON.stringify({ msg: `deleted ${slug}`, resData }));
   } catch (err) {
     console.error(err);
     res.statusCode = 500;
