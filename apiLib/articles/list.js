@@ -13,7 +13,6 @@ const docClient = new AWS.DynamoDB.DocumentClient({
 
 export default async (req, res) => {
   try {
-    res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
     const { slug } = req.query;
 
     if (slug == null) {
@@ -24,6 +23,7 @@ export default async (req, res) => {
       };
 
       const resData = await docClient.scan(params).promise();
+      res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
       res.setHeader("Content-Type", "application/json");
       res.statusCode = 200;
       res.end(JSON.stringify(resData));
@@ -40,6 +40,7 @@ export default async (req, res) => {
         res.statusCode = 404;
         res.end(JSON.stringify({ err: "Could not find article" }));
       } else {
+        res.setHeader("Cache-Control", "s-maxage=60");
         res.statusCode = 200;
         res.end(JSON.stringify(resData.Item));
       }
