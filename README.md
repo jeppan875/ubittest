@@ -58,6 +58,13 @@ DELETE api/articles?slug=slug
 
 I have provided a postman collection which can be imported into postman for making these requests, ubit.postman_collection.json. It comes with a post request which has the required fields prefilled. Just change what you want and send the requests.
 
+I have a express server which is only used for when developing locally. This is needed if working on a windows system. To start the application locally use:
+yarn // install dependencies
+yarn dev // start frontend on port 3000
+yarn server // start dev server
+
+Running it locally wont work very well since no env variables are provided for accessing dynamodb.
+
 #### dynamodb
 
 I choosed aws dynamodb for database. There is one table called articles which holds the following properties:
