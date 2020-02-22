@@ -12,7 +12,7 @@ Article.getInitialProps = async ({ store, req, query }) => {
     const { slug } = query;
     const res = await fetch(`${baseUrl()}/api/articles?slug=${slug}`);
     const data = await res.json();
-    store.dispatch(setArticle({ data, slug }));
+    store.dispatch(setArticle({ data, key: slug }));
   }
 };
 

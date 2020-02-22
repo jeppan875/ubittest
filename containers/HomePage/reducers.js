@@ -7,7 +7,7 @@ import {
 const initialState = {
   articles: {
     fetching: false,
-    data: {}
+    data: null
   }
 };
 

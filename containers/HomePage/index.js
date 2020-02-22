@@ -6,7 +6,7 @@ import { articleSelector, fetchingArticles, errorArticles } from "./selectors";
 import { createStructuredSelector } from "reselect";
 import Fetching from "components/Fetching";
 import ArticleItem from "components/ArticleItem";
-import { media, colors, gutters } from "utils/cssMixins";
+import { media, gutters } from "utils/cssMixins";
 
 const Flex = styled.div`
   display: flex;
@@ -40,8 +40,8 @@ const HomePage = ({ fetchArticles, articles, fetching, error }) => {
   return (
     <Fetching fetching={fetching} error={error}>
       <Flex>
-        {articles.Items
-          ? articles.Items?.map(article => (
+        {articles?.Items
+          ? articles?.Items?.map(article => (
               <ArticleItem article={article} key={article.slug} />
             ))
           : null}

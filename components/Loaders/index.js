@@ -14,6 +14,7 @@ const rotate = keyframes`
 `;
 
 export const Loader = styled(LoaderAlt)`
+  margin-top: 50px;
   align-self: center;
   width: 46px;
   height: 46px;

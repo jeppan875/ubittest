@@ -4,26 +4,26 @@ import {
   SET_ARTICLE_ERROR
 } from "./constants";
 
-export const setArticle = ({ data, slug }) => {
+export const setArticle = ({ data, key }) => {
   return {
     type: SET_ARTICLE,
     data,
-    slug
+    slug: key
   };
 };
 
-export const setArticleError = ({ data, slug }) => {
+export const setArticleError = ({ data, key }) => {
   return {
     type: SET_ARTICLE_ERROR,
     data,
-    slug
+    slug: key
   };
 };
 
-export const setFetchingArticle = ({ data, slug }) => {
+export const setFetchingArticle = ({ data, key }) => {
   return {
     type: SET_FETCHING_ARTICLE,
     data,
-    slug
+    slug: key
   };
 };
