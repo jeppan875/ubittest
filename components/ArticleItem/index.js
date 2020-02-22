@@ -6,6 +6,9 @@ const Root = styled.div`
   max-width: 350px;
   width: 100%;
   cursor: pointer;
+  ${media.mobile`
+    max-width: 500px;
+  `}
 `;
 
 const ContentWrapper = styled.div`

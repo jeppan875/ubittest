@@ -6,6 +6,9 @@ const Root = styled.article`
   margin: 20px 0;
   max-width: 650px;
   width: 100%;
+  ${media.mobile`
+    margin: 0;
+  `}
 `;
 
 const Image = styled.img`
@@ -41,7 +44,6 @@ const Author = styled.span`
 
 const Text = styled.p`
   max-height: 25px;
-  word-break: break-all;
   padding-bottom: 20px;
 `;
 
