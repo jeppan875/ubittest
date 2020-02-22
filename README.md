@@ -11,12 +11,12 @@ The application can be reached on this url: [UBIT test](https://ubittest.jeppan8
 
 #### NextJs
 
-React framework for server rendering. Disable javascript in settings > debugger and see each page render without any javascript execution.
+React framework for client and server rendering. Disable javascript in the browser (chrome) by going to settings > debugger and see each page render without any javascript execution.
 
-NextJs looks in the pages directory for existing pages. Index.js is the home route. This application has the / home route and article/slug. By making directory article and a file in brackets \[slug].js
-we can create dynamic pages based on a slug. So each article can be reach by their slug.
+NextJs has a top pages directory where each defined page file represents a webpage, for instance article.js would become domain/article. Index.js is the home directory /. By making a file in brackets [slug].js
+we can create dynamic pages based on that param, in this case a slug. So each article can be reach by their slug.
 
-The rest is quite similar ordinary react.
+The rest is quite similar ordinary react with a component tree that starts with app.js which is also defined in the pages directory.
 
 #### Redux
 
@@ -24,17 +24,17 @@ I choosed to use redux for state handling. It is a lot of overhead but tend to w
 
 #### sagas
 
-For handling side effects like fetching data. I find this a convinient place to handle fetching and
+For handling side effects like fetching data. I find this a convinient place to handle requests and
 populating the redux state by calling actions that calls reducers. Sagas come with many handy functions that can be helpful for handling side effects. For instance the most used TakeLatest which always take the latest request. So if another request was sent before the other had chance to complete it cancels the previous saga.
 
 #### styled components
 
 [styled components](https://styled-components.com/)
-I came to like this a lot since it is quite easy to work with and understand. You can easily send props to styled components which can be used for dynamically render the css.
+A quite straightforward css library where you can style your components. It is easy to learn and use. 
 
 #### Structure
 
-Each page has its own page file defined in the pages folder. In the containers folder each page has its own folder. Here they have their sagas, actions, selectors, reducers and constants files. They also have a components folser for components specific for this page only.
+Each page file in the pages folder has a corresponding container. Here they have their sagas, actions, selectors, reducers and constants files. They also have a components folder for components specific for this page only.
 
 Components folders holds components that are shared throughout the application.
 
@@ -46,13 +46,15 @@ Components folders holds components that are shared throughout the application.
 
 #### Lambdas
 
-Nextjs comes with a built in feature for creating serverless lambdas. By making a folder in the pages directory called api each file there becomes a lambda function. There is one file ther called articles.js which handles get, post and delete requests. In apiLib directory I have creted the functions for handling each request plus validation schema with Joi.
+Nextjs comes with a built in feature for creating serverless lambdas. By making a folder in the pages directory called api each file there becomes a lambda function. There is one file there called articles.js which handles get, post and delete requests. In apiLib directory I have created the functions for handling each request plus validation schema with Joi.
 
 Endpoints:
 
 POST api/articles
 GET api/articles, api/articles?slug=slug
 DELETE api/articles?slug=slug
+
+I have provided a postman collection which can be imported into postman for making these requests, ubit.postman_collection.json. It comes with a post request which has the required fields prefilled. Just change what you want and send the requests.
 
 #### dynamodb
 
@@ -66,7 +68,7 @@ author: string
 authorImg: string
 imgurl: string
 
-Dynamodb has a feature called global indexes where you can define indexes for your tables. I creted one called list-article-index which only retrieves the properties needed for displaying an article in al list. Only slug, imgurl and title are retrieved from here.
+Dynamodb has a feature called global indexes where you can define indexes for your tables. I creted one called list-article-index which only retrieves the properties needed for displaying an article in a list. Only slug, imgurl and title are retrieved from here. This is used for the frontpage.
 
 #### now
 
@@ -82,7 +84,7 @@ For the frontpage articles I use cache control stale-while-revalidate:
 Cache-Control: s-maxage=1, stale-while-revalidate
 
 To see it in action go to frontpage and look at x-now-cache header after reloading:
-x-now-cache: MISS // the response is came from origin server and not cdn, only happens after a new deploy
+x-now-cache: MISS // the response came from origin server and not cdn, only happens after a new deploy
 reload page
 x-now-cache: STALE // the response is stale and served from cdn, in the background a new request to origin server is done to get a fresh copy
 create a new article and reload
@@ -100,4 +102,4 @@ x-now-cache: HIT // serve from cache
 wait 1 min reload
 x-now-cache: MISS // no cache
 
-In reality you probably want to cache this for a long time since the articles probably not change after they are published. There seem to be some limitation on zeit for purging a cache by url which others also raised [issue](https://github.com/zeit/docs/issues/1617) on. Especially for cms where you might want to update an article becuase of some typo would want to invalidate the cache.
+In reality you probably want to cache this for a long time since the articles probably not change after they are published. There seem to be some limitation on zeit for purging a cache by url which others also raised [issue](https://github.com/zeit/docs/issues/1617) on. Especially for cms where you might want to update an article becuase of some typo. Then you would want to invalidate the cache without doing a new deploy.
